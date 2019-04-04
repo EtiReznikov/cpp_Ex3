@@ -1,6 +1,7 @@
+#pragma once
 #include <iostream>
 using namespace std;
-
+namespace arie{
 enum class Unit {
 	CM,	
 	M,
@@ -12,3 +13,4 @@ enum class Unit {
     KG,
     TON
 };
+}
