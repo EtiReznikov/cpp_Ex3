@@ -164,7 +164,7 @@ return *this;
 
 bool ariel::operator==(const PhysicalNumber& p_n1, const PhysicalNumber p_n2)
 {
-
+return true;
 }
 
 bool ariel::operator!=(const PhysicalNumber& p_n1, const PhysicalNumber p_n2)

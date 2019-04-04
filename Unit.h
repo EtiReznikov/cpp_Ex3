@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 using namespace std;
-namespace arie{
+namespace ariel{
 enum class Unit {
 	CM,	
 	M,
