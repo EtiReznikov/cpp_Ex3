@@ -7,16 +7,17 @@ class PhysicalNumber
     private:
     double data;
     Unit unit;
-    bool sametype(Unit u1, Unit u2);
+    int type(Unit u1, Unit u2);
+    double ariel::PhysicalNumber:: convert(const PhysicalNumber& p_n, Unit unit);
 
     public:
 PhysicalNumber(double data, Unit unit);
 //~PhysicalNumber();
 
-    PhysicalNumber operator+(const PhysicalNumber& p_n) const;
+     PhysicalNumber operator+(const PhysicalNumber& p_n)  ;
     PhysicalNumber& operator+=(const PhysicalNumber& p_n);
 
-    PhysicalNumber operator-(const PhysicalNumber& p_n) const;
+    PhysicalNumber operator-(const PhysicalNumber& p_n) ;
     PhysicalNumber& operator-=(const PhysicalNumber& p_n) ;
 
     const PhysicalNumber operator+() ;
@@ -26,8 +27,8 @@ PhysicalNumber(double data, Unit unit);
     PhysicalNumber& operator++();
     PhysicalNumber& operator--();
 
-    bool operator==(const PhysicalNumber& p_n1) const;
-    bool operator!=(const PhysicalNumber& p_n) const;
+    friend bool operator==(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
+    friend bool operator!=(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
     friend bool operator<(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
     friend bool operator>(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
     friend bool operator<=(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);

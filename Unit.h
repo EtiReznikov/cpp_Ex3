@@ -1,7 +1,10 @@
+#include <iostream>
+using namespace std;
+
 enum class Unit {
 	CM,	
-	KM,
 	M,
+    KM,
 	SEC,
     MIN,
     HOUR,
