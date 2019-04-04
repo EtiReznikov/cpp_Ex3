@@ -1,12 +1,13 @@
-namespace ariel{
 #include <iostream>
 #include "Unit.h"
 using namespace std;
+namespace ariel{
 class PhysicalNumber
 {
     private:
     double data;
     Unit unit;
+
     int type(Unit u1, Unit u2);
     double convert(const PhysicalNumber& p_n, Unit unit);
 
