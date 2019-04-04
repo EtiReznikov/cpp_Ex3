@@ -8,7 +8,7 @@ class PhysicalNumber
     double data;
     Unit unit;
     int type(Unit u1, Unit u2);
-    double ariel::PhysicalNumber:: convert(const PhysicalNumber& p_n, Unit unit);
+    double convert(const PhysicalNumber& p_n, Unit unit);
 
     public:
 PhysicalNumber(double data, Unit unit);

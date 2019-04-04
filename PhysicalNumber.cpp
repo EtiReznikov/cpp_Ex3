@@ -104,7 +104,7 @@ return p_n.data;
  }
 
 
-ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator+(const PhysicalNumber& p_n1) 
+ariel::PhysicalNumber ariel::PhysicalNumber::operator+(const PhysicalNumber& p_n1) 
 {
    
 if (type(this->unit, p_n1.unit)==-1)
@@ -115,7 +115,7 @@ double data=convert(p_n1, this->unit);
 return PhysicalNumber(this->data+data, this->unit);
 }
 
-ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator+=(const PhysicalNumber& p_n)
+ariel::PhysicalNumber& ariel::PhysicalNumber::operator+=(const PhysicalNumber& p_n)
 {
 
     this->data=this->data+p_n.data;
@@ -123,7 +123,7 @@ ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator+=(const P
 }
 
 
-ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator-(const PhysicalNumber& p_n1) 
+ariel::PhysicalNumber ariel::PhysicalNumber::operator-(const PhysicalNumber& p_n1) 
 {
        
 if (type(this->unit, p_n1.unit)==-1)
@@ -135,28 +135,28 @@ return PhysicalNumber(this->data+data, this->unit);
 }
 
 
-ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator-=(const PhysicalNumber& p_n) 
+ariel::PhysicalNumber& ariel::PhysicalNumber::operator-=(const PhysicalNumber& p_n) 
 {
     this->data=this->data-p_n.data;
     return *this;
 }
 
- const ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator+() 
+ const ariel::PhysicalNumber ariel::PhysicalNumber::operator+() 
  {
 return *this;
  }
- const ariel::PhysicalNumber::PhysicalNumber ariel::PhysicalNumber::operator-() 
+ const ariel::PhysicalNumber ariel::PhysicalNumber::operator-() 
 {
     this->data=-this->data;
     return *this;
 }
 
-ariel::PhysicalNumber::PhysicalNumber& ariel::PhysicalNumber::operator++()
+ariel::PhysicalNumber& ariel::PhysicalNumber::operator++()
 {
 this->data=this->data+1;
 return *this;
 }
-ariel::PhysicalNumber:: PhysicalNumber& ariel::PhysicalNumber::operator--()
+ariel:: PhysicalNumber& ariel::PhysicalNumber::operator--()
 {
 this->data=this->data-1;
 return *this;
