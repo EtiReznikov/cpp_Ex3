@@ -24,6 +24,19 @@ int main() {
     PhysicalNumber c(2, Unit::HOUR);
     PhysicalNumber d(30, Unit::MIN);
 
+   //My PhysicalNUmbers
+    PhysicalNumber km(5, Unit::KM);
+    PhysicalNumber m(400, Unit::M);
+    PhysicalNumber cm(7000, Unit::CM);
+
+    PhysicalNumber min(45, Unit::MIN);
+    PhysicalNumber hour(3, Unit::HOUR);
+    PhysicalNumber sec(4, Unit::SEC);
+
+    PhysicalNumber ton(7, Unit::TON);
+    PhysicalNumber kg(50, Unit::KG);
+    PhysicalNumber g(200, Unit::G);
+
     testcase
     .setname("Basic output")
     .CHECK_OUTPUT(a, "2[km]")
@@ -51,7 +64,77 @@ int main() {
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
 
-      .setname("...")
+    .setname("My Basic Output")
+
+
+    .CHECK_OUTPUT(km, "5[km]")
+    .CHECK_OUTPUT(m, "400[m]")
+    .CHECK_OUTPUT(cm, "7000[cm]")
+    .CHECK_OUTPUT(min, "45[min]")
+    .CHECK_OUTPUT(hour, "3[hour]")
+    .CHECK_OUTPUT(sec, "30[sec]")
+    .CHECK_OUTPUT(ton, "7[ton]")
+    .CHECK_OUTPUT(kg, "50[kg]")
+    .CHECK_OUTPUT(g, "200[g]")
+
+     .setname("My Compatible dimensions")
+    .CHECK_OUTPUT(km+m, "5.4[km]")
+    .CHECK_OUTPUT(m+cm, "470[m]")
+    .CHECK_OUTPUT(cm+km, "507000[cm]")
+    .CHECK_OUTPUT(km+cm, "5.07[km]")
+    .CHECK_OUTPUT(m+km, "5400[m]")
+    .CHECK_OUTPUT(cm+m, "47000[cm]")
+
+    .CHECK_OUTPUT(min+hour, "225[min]")
+    .CHECK_OUTPUT(hour+min, "3.75[hour]")
+    .CHECK_OUTPUT(min+sec, "45.5[min]")
+    .CHECK_OUTPUT(sec+min, "2730[sec]")
+
+     .CHECK_OUTPUT(ton+kg, "7.05[ton]")
+    .CHECK_OUTPUT(kg+ton, "7050[kg]")
+  
+
+
+    .CHECK_OUTPUT((km+=m), "5.4[km]")
+    .CHECK_OUTPUT(km, "5.4[km]")
+    .CHECK_OUTPUT(km-km, "0[km]")
+    .CHECK_OUTPUT((m-=km), "400[m]")
+    .CHECK_OUTPUT((m-=m), "0[m]")
+    .CHECK_OUTPUT(+min, "45[min]")
+    .CHECK_OUTPUT(-hour, "-3[hour]")
+    .CHECK_OUTPUT(ton++, "8[ton]")
+    .CHECK_OUTPUT((ton)--, "7[ton]")
+
+
+   
+   
+
+ .setname("My Incompatible dimensions")
+    .CHECK_THROWS(km+min)
+    .CHECK_THROWS(hour+ton)
+    .CHECK_THROWS(ton+kg)
+    .CHECK_THROWS(kg+min)
+    .CHECK_THROWS(sec+kg)
+    .CHECK_THROWS(kg+cm)
+    .CHECK_THROWS(cm+sec)
+    .CHECK_THROWS(sec+ton)
+    .CHECK_THROWS(ton+km)
+
+
+.setname("My boolean")
+    .CHECK_EQUAL(hour==PhysicalNumber(3, Unit::HOUR), true)
+    .CHECK_EQUAL(hour==PhysicalNumber(180, Unit::MIN), true)
+    .CHECK_EQUAL(hour!=PhysicalNumber(3, Unit::TON), true)
+    .CHECK_EQUAL(hour>PhysicalNumber(60, Unit::MIN), true)
+    .CHECK_EQUAL(hour<PhysicalNumber(190, Unit::MIN), true)
+    
+
+    .setname("My Basic input")
+    .CHECK_OK(istringstream("5[kg]") >> km)
+    .CHECK_OUTPUT((km += PhysicalNumber(7, Unit::KG)), "12[kg]")
+    .CHECK_THROWS(km -=PhysicalNumber(8,Unit::HOUR))
+   
+
 
       .print(cout, /*show_grade=*/false);
       grade = testcase.grade();
