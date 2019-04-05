@@ -16,7 +16,7 @@ ariel::PhysicalNumber ariel::PhysicalNumber::operator+(const PhysicalNumber& p_n
    
 if (type(this->unit, p_n1.unit)==-1)
 {
-    throw "Units not frim the same type";
+    throw "Units not from the same type";
 }
 double data=convert(p_n1, this->unit);
 return PhysicalNumber(this->data+data, this->unit);
@@ -24,7 +24,11 @@ return PhysicalNumber(this->data+data, this->unit);
 
 ariel::PhysicalNumber ariel::PhysicalNumber::operator+=(const PhysicalNumber& p_n)
 {
-
+    if (type(this->unit, p_n.unit)==-1)
+    {
+        throw "Units not from the same type";
+    }
+    double data=convert(p_n, this->unit);
     this->data=this->data+p_n.data;
     return *this;
 }
@@ -35,7 +39,7 @@ ariel::PhysicalNumber ariel::PhysicalNumber::operator-(const PhysicalNumber& p_n
        
 if (type(this->unit, p_n1.unit)==-1)
 {
-    throw "Units not frim the same type";
+    throw "Units not from the same type";
 }
 double data=convert(p_n1, this->unit);
 return PhysicalNumber(this->data+data, this->unit);
@@ -44,29 +48,31 @@ return PhysicalNumber(this->data+data, this->unit);
 
 ariel::PhysicalNumber ariel::PhysicalNumber::operator-=(const PhysicalNumber& p_n) 
 {
+     if (type(this->unit, p_n.unit)==-1)
+    {
+        throw "Units not from the same type";
+    }
+    double data=convert(p_n, this->unit);
     this->data=this->data-p_n.data;
     return *this;
 }
 
- const ariel::PhysicalNumber ariel::PhysicalNumber::operator+() 
+ const ariel::PhysicalNumber& ariel::PhysicalNumber::operator+() 
  {
-return *this;
+    PhysicalNumber(this->data, this->unit);
  }
- const ariel::PhysicalNumber ariel::PhysicalNumber::operator-() 
+ const ariel::PhysicalNumber& ariel::PhysicalNumber::operator-() 
 {
-    this->data=-this->data;
-    return *this;
+    PhysicalNumber(-(this->data), this->unit);
 }
 
-ariel::PhysicalNumber ariel::PhysicalNumber::operator++()
+void ariel::PhysicalNumber::operator++()
 {
 this->data=this->data+1;
-return *this;
 }
-ariel:: PhysicalNumber ariel::PhysicalNumber::operator--()
+void ariel::PhysicalNumber::operator--()
 {
 this->data=this->data-1;
-return *this;
 }
 
 bool ariel::operator==(const PhysicalNumber& p_n1, const PhysicalNumber p_n2)
@@ -96,7 +102,24 @@ bool ariel::operator<=(const PhysicalNumber& p_n1, const PhysicalNumber p_n2)
 
  ostream& ariel::operator<<(ostream& os, const PhysicalNumber& p_n)
  {
-  //os << p_n.data << p_n.unit << '\n';
+    if (p_n.unit==Unit::CM)
+  os << p_n.data << "[cm]\n";
+    if (p_n.unit==Unit::M)
+  os << p_n.data << "[m]\n";
+    if (p_n.unit==Unit::KM)
+  os << p_n.data << "[km]\n";
+    if (p_n.unit==Unit::SEC)
+  os << p_n.data << "[sec]\n";
+    if (p_n.unit==Unit::MIN)
+  os << p_n.data << "[min]\n";
+    if (p_n.unit==Unit::HOUR)
+  os << p_n.data << "[hour]\n";
+    if (p_n.unit==Unit::G)
+  os << p_n.data << "[g]\n";
+    if (p_n.unit==Unit::KG)
+  os << p_n.data << "[kg]\n";
+    if (p_n.unit==Unit::TON)
+  os << p_n.data << "[ton]\n";
     return os;
  }
  istream& ariel::operator>>(istream& st,  PhysicalNumber& p_n)
