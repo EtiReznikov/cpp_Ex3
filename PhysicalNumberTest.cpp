@@ -102,8 +102,7 @@ int main() {
     .CHECK_OUTPUT((m-=m), "0[m]")
     .CHECK_OUTPUT(+min, "45[min]")
     .CHECK_OUTPUT(-hour, "-3[hour]")
-    ton++;
-    .CHECK_OUTPUT(ton, "8[ton]")
+    .CHECK_OUTPUT((ariel::ton++), "8[ton]")
      ton--;
     .CHECK_OUTPUT(ton, "7[ton]")
 
