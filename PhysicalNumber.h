@@ -12,7 +12,7 @@ class PhysicalNumber
     double convert(const PhysicalNumber& p_n, Unit unit);
 
     public:
-PhysicalNumber(double data, Unit unit);
+    PhysicalNumber(double data, Unit unit);
 //~PhysicalNumber();
 
     PhysicalNumber operator+(const PhysicalNumber p_n)  ;
@@ -21,19 +21,19 @@ PhysicalNumber(double data, Unit unit);
     PhysicalNumber operator-(const PhysicalNumber p_n) ;
     PhysicalNumber& operator-=(const PhysicalNumber p_n) ;
 
-    const PhysicalNumber& operator+() ;
-    const PhysicalNumber& operator-() ;
+    const PhysicalNumber operator+() ;
+    const PhysicalNumber operator-() ;
 
 
     PhysicalNumber& operator++();
     PhysicalNumber& operator--();
 
-    friend bool operator==(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
-    friend bool operator!=(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
-    friend bool operator<(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
-    friend bool operator>(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
-    friend bool operator<=(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
-    friend bool operator>=(const PhysicalNumber& p_n1, const PhysicalNumber p_n2);
+    friend bool operator==(const PhysicalNumber p_n1, const PhysicalNumber p_n2);
+    friend bool operator!=(const PhysicalNumber p_n1, const PhysicalNumber p_n2);
+    friend bool operator<(const PhysicalNumber p_n1, const PhysicalNumber p_n2);
+    friend bool operator>(const PhysicalNumber p_n1, const PhysicalNumber p_n2);
+    friend bool operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2);
+    friend bool operator>=(const PhysicalNumber p_n1, const PhysicalNumber p_n2);
 
     friend ostream& operator<<(ostream& st, const PhysicalNumber& p_n);
     friend istream& operator>>(istream& st,  PhysicalNumber& p_n);
