@@ -59,11 +59,11 @@ ariel::PhysicalNumber& ariel::PhysicalNumber::operator-=(const PhysicalNumber p_
 
  const ariel::PhysicalNumber ariel::PhysicalNumber::operator+() 
  {
-    PhysicalNumber(this->data, this->unit);
+    return PhysicalNumber(this->data, this->unit);
  }
  const ariel::PhysicalNumber ariel::PhysicalNumber::operator-() 
 {
-    PhysicalNumber(-(this->data), this->unit);
+  return  PhysicalNumber(-(this->data), this->unit);
 }
 
 ariel::PhysicalNumber& ariel::PhysicalNumber::operator++()
