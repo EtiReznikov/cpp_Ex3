@@ -118,9 +118,12 @@ int main() {
 .setname("My boolean")
     .CHECK_EQUAL(hour==PhysicalNumber(3, Unit::HOUR), true)
     .CHECK_EQUAL(hour==PhysicalNumber(180, Unit::MIN), true)
-    .CHECK_EQUAL(hour!=PhysicalNumber(3, Unit::TON), true)
-    .CHECK_EQUAL(hour>PhysicalNumber(60, Unit::MIN), true)
-    .CHECK_EQUAL(hour<PhysicalNumber(190, Unit::MIN), true)
+    .CHECK_EQUAL(hour!=PhysicalNumber(3, Unit::TON), false)
+    .CHECK_EQUAL(hour>PhysicalNumber(60, Unit::MIN), false)
+    .CHECK_EQUAL(hour<PhysicalNumber(190, Unit::MIN), false)
+    .CHECK_EQUAL(hour>PhysicalNumber(60, Unit::KM), false)
+    .CHECK_EQUAL(hour>PhysicalNumber(70, Unit::MIN), false)
+
     
 
     .setname("My Basic input")
