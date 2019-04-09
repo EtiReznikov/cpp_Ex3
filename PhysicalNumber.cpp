@@ -174,8 +174,8 @@ bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
  }
  istream& ariel::operator>>(istream& st,  PhysicalNumber& p_n)
  {
-  double newdata; Unit newunit; 
-  ios::pos_type startPosition = st.tellg();
+ // double newdata; Unit newunit; 
+ /* ios::pos_type startPosition = st.tellg();
 
     if ( (!(st >> newdata))                 ||
          (!getAndCheckNextCharIs(st,'[')) ||
@@ -188,9 +188,10 @@ bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
         st.seekg(startPosition); // rewind
         st.clear(errorState); // set back the error flag
     } else {
-        p_n.data = newdata;
-        p_n.unit = newunit;
-    }
+      */
+      //  p_n.data = newdata;
+      //  p_n.unit = newunit;
+ //   }
 
     return st;
  }
@@ -285,15 +286,16 @@ return -1;
     }
 
 return p_n.data;
-    
- }
-static istream& getAndCheckNextCharIs(istream& input, char expectedChar) {
-    char actualChar;
-    input >> actualChar;
-    if (!input) return input;
+  /*  
+  }
+  static istream& getAndCheckNextCharIs(istream& input, char expectedChar) {
+      char actualChar;
+      input >> actualChar;
+      if (!input) return input;
 
-    if (actualChar!=expectedChar) 
-        // failbit is for format error
-        input.setstate(ios::failbit);
-    return input;
-}
+      if (actualChar!=expectedChar) 
+          // failbit is for format error
+          input.setstate(ios::failbit);
+      return input;
+  }
+*/
