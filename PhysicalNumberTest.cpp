@@ -113,15 +113,14 @@ int main() {
     .CHECK_THROWS(cm+sec)
     .CHECK_THROWS(sec+ton)
     .CHECK_THROWS(ton+km)
+    .CHECK_THROWS(hour!=PhysicalNumber(3, Unit::TON)
 
 
 .setname("My boolean")
     .CHECK_EQUAL(hour==PhysicalNumber(3, Unit::HOUR), true)
     .CHECK_EQUAL(hour==PhysicalNumber(180, Unit::MIN), true)
-    .CHECK_EQUAL(hour!=PhysicalNumber(3, Unit::TON), false)
     .CHECK_EQUAL(hour>PhysicalNumber(60, Unit::MIN), false)
     .CHECK_EQUAL(hour<PhysicalNumber(190, Unit::MIN), false)
-    .CHECK_EQUAL(hour>PhysicalNumber(60, Unit::KM), false)
     .CHECK_EQUAL(hour>PhysicalNumber(70, Unit::MIN), false)
 
     
