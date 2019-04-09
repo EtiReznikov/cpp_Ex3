@@ -77,6 +77,22 @@ this->data=this->data-1;
 return *this;
 }
 
+ariel::PhysicalNumber ariel::PhysicalNumber::operator++(int demo)
+{
+  PhysicalNumber temp(*this);
+  this->data=this->data+1;
+  return temp;
+
+}
+ariel::PhysicalNumber ariel::PhysicalNumber::operator--(int demo)
+{
+    PhysicalNumber temp(*this);
+  this->data=this->data-1;
+  return temp;
+
+
+}
+
 bool ariel::operator==(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
 {
 
@@ -153,23 +169,23 @@ bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
  ostream& ariel::operator<<(ostream& os, const PhysicalNumber& p_n)
  {
     if (p_n.unit==Unit::CM)
-  os << p_n.data << "[cm]\n";
+  os << p_n.data << "[cm]";
     if (p_n.unit==Unit::M)
-  os << p_n.data << "[m]\n";
+  os << p_n.data << "[m]";
     if (p_n.unit==Unit::KM)
-  os << p_n.data << "[km]\n";
+  os << p_n.data << "[km]";
     if (p_n.unit==Unit::SEC)
-  os << p_n.data << "[sec]\n";
+  os << p_n.data << "[sec]";
     if (p_n.unit==Unit::MIN)
-  os << p_n.data << "[min]\n";
+  os << p_n.data << "[min]";
     if (p_n.unit==Unit::HOUR)
-  os << p_n.data << "[hour]\n";
+  os << p_n.data << "[hour]";
     if (p_n.unit==Unit::G)
-  os << p_n.data << "[g]\n";
+  os << p_n.data << "[g]";
     if (p_n.unit==Unit::KG)
-  os << p_n.data << "[kg]\n";
+  os << p_n.data << "[kg]";
     if (p_n.unit==Unit::TON)
-  os << p_n.data << "[ton]\n";
+  os << p_n.data << "[ton]";
     return os;
  }
  istream& ariel::operator>>(istream& st,  PhysicalNumber& p_n)
