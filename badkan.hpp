@@ -170,3 +170,4 @@ private:
   }
 
 }; // end class TestCase
+}

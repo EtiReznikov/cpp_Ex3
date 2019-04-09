@@ -8,13 +8,15 @@ class PhysicalNumber
     double data;
     Unit unit;
 
-    int type(Unit u1, Unit u2);
-    double convert(const PhysicalNumber& p_n, Unit unit);
+   static int type(const Unit u1, const Unit u2);
+   static double convert(const PhysicalNumber p_n, const Unit unit);
+
+  
 
     public:
-    PhysicalNumber(double data, Unit unit);
-//~PhysicalNumber();
+        
 
+    PhysicalNumber(double data, Unit unit);
     PhysicalNumber operator+(const PhysicalNumber p_n)  ;
     PhysicalNumber& operator+=(const PhysicalNumber p_n);
 
@@ -39,4 +41,5 @@ class PhysicalNumber
     friend istream& operator>>(istream& st,  PhysicalNumber& p_n);
 
 };
+ 
 }

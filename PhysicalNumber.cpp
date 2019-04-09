@@ -79,27 +79,75 @@ return *this;
 
 bool ariel::operator==(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
 {
-return true;
+
+ if (ariel::PhysicalNumber::type(p_n1.unit, p_n2.unit)==-1)
+    {
+        throw "Units not from the same type";
+    }
+    double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
+    if (p_n1.data==p_n2.data)
+       return true;
+    return false;
+    
 }
 
 bool ariel::operator!=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
 {
-    return true;
+ 
+ if (ariel::PhysicalNumber::type(p_n1.unit, p_n2.unit)==-1)
+    {
+        throw "Units not from the same type";
+    }
+    double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
+    if (p_n1.data!=p_n2.data)
+       return true;
+    return false;
 }
 bool ariel::operator<(const PhysicalNumber p_n1, const PhysicalNumber p_n2){
-    return true;
+    
+ if (ariel::PhysicalNumber::type(p_n1.unit, p_n2.unit)==-1)
+    {
+        throw "Units not from the same type";
+    }
+    double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
+    if (p_n1.data<p_n2.data)
+       return true;
+    return false;
 }
 bool ariel::operator>(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
 {
-    return true;
+  
+ if (ariel::PhysicalNumber::type(p_n1.unit, p_n2.unit)==-1)
+    {
+        throw "Units not from the same type";
+    }
+    double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
+    if (p_n1.data>p_n2.data)
+       return true;
+    return false;
 }
 bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
 {
-    return true;
+ if (ariel::PhysicalNumber::type(p_n1.unit, p_n2.unit)==-1)
+    {
+        throw "Units not from the same type";
+    }
+    double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
+    if (p_n1.data<=p_n2.data)
+       return true;
+    return false;
 }
  bool ariel::operator>=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
  {
-     return true;
+     
+ if (ariel::PhysicalNumber::type(p_n1.unit, p_n2.unit)==-1)
+    {
+        throw "Units not from the same type";
+    }
+    double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
+    if (p_n1.data>=p_n2.data)
+       return true;
+    return false;
  }
 
  ostream& ariel::operator<<(ostream& os, const PhysicalNumber& p_n)
@@ -126,11 +174,11 @@ bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
  }
  istream& ariel::operator>>(istream& st,  PhysicalNumber& p_n)
  {
-//p_n.read(st); 
+  double data; Unit unit; 
 return st;
  }
 
-int ariel::PhysicalNumber::type(Unit unit1, Unit unit2)
+int ariel::PhysicalNumber::type(const Unit unit1, const Unit unit2)
  {
 if ((Unit::CM<= unit1 && unit1<=Unit::KM) && (Unit::CM<= unit2 && unit2<=Unit::KM))
     return 1;
@@ -141,10 +189,10 @@ if ((Unit::G<= unit1 && unit1<=Unit::TON) && (Unit::G<= unit2 && unit2<=Unit::TO
 return -1;
  }
 
- double ariel::PhysicalNumber:: convert(const PhysicalNumber& p_n, Unit unit)
+ double ariel::PhysicalNumber:: convert(const PhysicalNumber p_n,const Unit unit)
  {
     if (p_n.unit==unit)
-    return p_n.data;
+      return p_n.data;
     int typeofunit=type(p_n.unit, unit);
     if (typeofunit==1)
     {
@@ -155,14 +203,14 @@ return -1;
         else if (p_n.unit==Unit::M)
           return p_n.data/1000;
        }
-       else if (this->unit==Unit::CM)
+       else if (unit==Unit::CM)
        {
         if (p_n.unit==Unit::KM)
           return p_n.data*100000;
         else if (p_n.unit==Unit::M)
           return p_n.data*100;
        }
-       else if (this->unit==Unit::M)
+       else if (unit==Unit::M)
        {
         if (p_n.unit==Unit::CM)
           return p_n.data/100;
@@ -179,14 +227,14 @@ return -1;
         else if (p_n.unit==Unit::MIN)
           return p_n.data/60;
        }
-       else if (this->unit==Unit::SEC)
+       else if (unit==Unit::SEC)
        {
         if (p_n.unit==Unit::HOUR)
           return p_n.data*3600;
         else if (p_n.unit==Unit::MIN)
           return p_n.data*60;
        }
-       else if (this->unit==Unit::MIN)
+       else if (unit==Unit::MIN)
        {
         if (p_n.unit==Unit::HOUR)
           return p_n.data*60;
@@ -203,14 +251,14 @@ return -1;
         else if (p_n.unit==Unit::G)
           return p_n.data/1000000;
        }
-       else if (this->unit==Unit::KG)
+       else if (unit==Unit::KG)
        {
         if (p_n.unit==Unit::TON)
           return p_n.data*1000;
         else if (p_n.unit==Unit::G)
           return p_n.data/1000;
        }
-       else if (this->unit==Unit::G)
+       else if (unit==Unit::G)
        {
         if (p_n.unit==Unit::TON)
           return p_n.data*1000000;
