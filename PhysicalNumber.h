@@ -10,6 +10,7 @@ class PhysicalNumber
 
    static int type(const Unit u1, const Unit u2);
    static double convert(const PhysicalNumber p_n, const Unit unit);
+   static istream& getAndCheckNextCharIs(istream& input, char expectedChar);
 
   
 
