@@ -174,7 +174,7 @@ bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
  }
  istream& ariel::operator>>(istream& st,  PhysicalNumber& p_n)
  {
- // double newdata; Unit newunit; 
+  double newdata; Unit newunit; 
  /* ios::pos_type startPosition = st.tellg();
 
     if ( (!(st >> newdata))                 ||
@@ -286,6 +286,7 @@ return -1;
     }
 
 return p_n.data;
+ }
   /*  
   }
   static istream& getAndCheckNextCharIs(istream& input, char expectedChar) {
