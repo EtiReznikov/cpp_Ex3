@@ -289,7 +289,7 @@ return -1;
 
  double ariel::PhysicalNumber:: convert(const PhysicalNumber p_n,const Unit unit)
  {
-   double ans;
+   double ans=0;
     if (p_n.unit==unit)
      ans=p_n.data;
     int typeofunit=type(p_n.unit, unit);
