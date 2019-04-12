@@ -10,7 +10,6 @@ this->data=data;
 this->unit=unit;
 }
 
- 
 
 ariel::PhysicalNumber ariel::PhysicalNumber::operator+(const PhysicalNumber p_n1) 
 {
@@ -290,31 +289,32 @@ return -1;
 
  double ariel::PhysicalNumber:: convert(const PhysicalNumber p_n,const Unit unit)
  {
+   double ans;
     if (p_n.unit==unit)
-      return p_n.data;
+     ans=p_n.data;
     int typeofunit=type(p_n.unit, unit);
     if (typeofunit==1)
     {
       if (unit==Unit::KM)
       {
         if (p_n.unit==Unit::CM)
-          return p_n.data/100000;
+          ans= p_n.data/100000;
         else if (p_n.unit==Unit::M)
-          return p_n.data/1000;
+          ans= p_n.data/1000;
        }
        else if (unit==Unit::CM)
        {
         if (p_n.unit==Unit::KM)
-          return p_n.data*100000;
+          ans= p_n.data*100000;
         else if (p_n.unit==Unit::M)
-          return p_n.data*100;
+          ans= p_n.data*100;
        }
        else if (unit==Unit::M)
        {
         if (p_n.unit==Unit::CM)
-          return p_n.data/100;
+         ans= p_n.data/100;
         else if (p_n.unit==Unit::KM)
-          return p_n.data*1000;
+         ans= p_n.data*1000;
        }
     }
     else if (typeofunit==2)
@@ -322,23 +322,23 @@ return -1;
         if (unit==Unit::HOUR)
       {
         if (p_n.unit==Unit::SEC)
-          return p_n.data/3600;
+         ans= p_n.data/3600;
         else if (p_n.unit==Unit::MIN)
-          return p_n.data/60;
+         ans= p_n.data/60;
        }
        else if (unit==Unit::SEC)
        {
         if (p_n.unit==Unit::HOUR)
-          return p_n.data*3600;
+         ans= p_n.data*3600;
         else if (p_n.unit==Unit::MIN)
-          return p_n.data*60;
+          ans= p_n.data*60;
        }
        else if (unit==Unit::MIN)
        {
         if (p_n.unit==Unit::HOUR)
-          return p_n.data*60;
+          ans= p_n.data*60;
         else if (p_n.unit==Unit::SEC)
-          return p_n.data/60;
+         ans= p_n.data/60;
        }
     }
      else if (typeofunit==3)
@@ -346,27 +346,27 @@ return -1;
         if (unit==Unit::TON)
       {
         if (p_n.unit==Unit::KG)
-          return p_n.data/1000;
+         ans=p_n.data/1000;
         else if (p_n.unit==Unit::G)
-          return p_n.data/1000000;
+         ans= p_n.data/1000000;
        }
        else if (unit==Unit::KG)
        {
         if (p_n.unit==Unit::TON)
-          return p_n.data*1000;
+         ans= p_n.data*1000;
         else if (p_n.unit==Unit::G)
-          return p_n.data/1000;
+          ans=p_n.data/1000;
        }
        else if (unit==Unit::G)
        {
         if (p_n.unit==Unit::TON)
-          return p_n.data*1000000;
+         ans=p_n.data*1000000;
         else if (p_n.unit==Unit::KG)
-          return p_n.data*1000;
+         ans= p_n.data*1000;
        }
     }
 
-return p_n.data;
+return ans;
  }
   /*  
   }
