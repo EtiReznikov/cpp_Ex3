@@ -227,7 +227,7 @@ if (vaildinput)
     vaildinput=false;
   if (vaildinput)
   {
-    data=input.substr(0, startunit-1);
+    data=input.substr(0, startunit);
     try
     {
       size_t offset = 0; //offset will be set to the length of characters of the "value" - 1.
