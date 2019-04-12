@@ -29,7 +29,7 @@ ariel::PhysicalNumber& ariel::PhysicalNumber::operator+=(const PhysicalNumber p_
         throw "Units not from the same type";
     }
     double data=convert(p_n, this->unit);
-    this->data=this->data+p_n.data;
+    this->data=this->data+data;
     return *this;
 }
 
@@ -42,7 +42,7 @@ if (type(this->unit, p_n1.unit)==-1)
     throw "Units not from the same type";
 }
 double data=convert(p_n1, this->unit);
-return PhysicalNumber(this->data+data, this->unit);
+return PhysicalNumber(this->data-data, this->unit);
 }
 
 
@@ -53,7 +53,7 @@ ariel::PhysicalNumber& ariel::PhysicalNumber::operator-=(const PhysicalNumber p_
         throw "Units not from the same type";
     }
     double data=convert(p_n, this->unit);
-    this->data=this->data-p_n.data;
+    this->data=this->data-data;
     return *this;
 }
 
