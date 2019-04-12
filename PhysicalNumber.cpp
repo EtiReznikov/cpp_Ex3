@@ -101,7 +101,7 @@ bool ariel::operator==(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
         throw "Units not from the same type";
     }
     double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
-    if (p_n1.data==p_n2.data)
+    if (p_n1.data==data)
        return true;
     return false;
     
@@ -115,7 +115,7 @@ bool ariel::operator!=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
         throw "Units not from the same type";
     }
     double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
-    if (p_n1.data!=p_n2.data)
+    if (p_n1.data!=data)
        return true;
     return false;
 }
@@ -126,7 +126,7 @@ bool ariel::operator<(const PhysicalNumber p_n1, const PhysicalNumber p_n2){
         throw "Units not from the same type";
     }
     double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
-    if (p_n1.data<p_n2.data)
+    if (p_n1.data<data)
        return true;
     return false;
 }
@@ -138,7 +138,7 @@ bool ariel::operator>(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
         throw "Units not from the same type";
     }
     double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
-    if (p_n1.data>p_n2.data)
+    if (p_n1.data>data)
        return true;
     return false;
 }
@@ -149,7 +149,7 @@ bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
         throw "Units not from the same type";
     }
     double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
-    if (p_n1.data<=p_n2.data)
+    if (p_n1.data<=.data)
        return true;
     return false;
 }
@@ -161,7 +161,7 @@ bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
         throw "Units not from the same type";
     }
     double data=ariel::PhysicalNumber::convert(p_n2, p_n1.unit);
-    if (p_n1.data>=p_n2.data)
+    if (p_n1.data>=data)
        return true;
     return false;
  }
