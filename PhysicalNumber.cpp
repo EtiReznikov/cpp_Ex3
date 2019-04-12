@@ -1,5 +1,6 @@
 #include <iostream>
 #include "PhysicalNumber.h"
+#include "string"
 using namespace std;
 
 
@@ -191,6 +192,70 @@ bool ariel::operator<=(const PhysicalNumber p_n1, const PhysicalNumber p_n2)
  istream& ariel::operator>>(istream& st,  PhysicalNumber& p_n)
  {
   double newdata; Unit newunit; 
+  string input;
+  st >> input;
+  string unit, data;
+  int startunit=0; int endunit=0;
+  bool vaildinput=true;
+  startunit=input.find("[");
+  endunit=input.find("]");
+  if (startunit==-1 || endunit ==-1)
+  {
+    vaildinput=false;
+  }
+if (vaildinput)
+{
+  unit=input.substr(startunit, endunit);
+  if (unit == "[cm]" ) 
+     newunit= Unit::CM;
+  else if (unit == "[m]" ) 
+     newunit= Unit::M;
+  else if (unit == "[km]" ) 
+     newunit= Unit::KM;
+  else if (unit == "[sec]" ) 
+     newunit= Unit::SEC;
+  else if (unit == "[min]" ) 
+     newunit= Unit::MIN;
+  else if (unit == "[hour]" ) 
+     newunit= Unit::HOUR;
+  else if (unit == "[g]" ) 
+     newunit= Unit::G;
+  else if (unit == "[kg]" ) 
+     newunit= Unit::KG;
+  else if (unit == "[ton]" ) 
+     newunit= Unit::TON;
+  else
+    vaildinput=false;
+  if (vaildinput)
+  {
+    data=input.substr(0, startunit-1);
+    try
+    {
+      size_t offset = 0; //offset will be set to the length of characters of the "value" - 1.
+      newdata= stod(&data[0], &offset); //So we want to get the value "5.9568
+    }
+    catch (exception &e)
+    {
+      vaildinput=false;
+    }
+            
+  }
+}
+if (vaildinput)
+{
+  p_n.unit=newunit;
+  p_n.convert=newdata;
+}
+else
+{
+  auto errorState = st.rdstate(); // remember error state
+  st.clear(); // clear error so seekg will work
+ // st.seekg(startPosition); // rewind
+  st.clear(errorState); // set back the error flag
+}
+
+  
+
  /* ios::pos_type startPosition = st.tellg();
 
     if ( (!(st >> newdata))                 ||
