@@ -31,7 +31,7 @@ class PhysicalNumber
     PhysicalNumber& operator++();
     PhysicalNumber& operator--();
 
-     PhysicalNumber operator++(int demo);
+    PhysicalNumber operator++(int demo);
     PhysicalNumber operator--(int demo);
 
     friend bool operator==(const PhysicalNumber p_n1, const PhysicalNumber p_n2);

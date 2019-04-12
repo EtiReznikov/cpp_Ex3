@@ -243,7 +243,7 @@ if (vaildinput)
 if (vaildinput)
 {
   p_n.unit=newunit;
-  p_n.convert=newdata;
+  p_n.data=newdata;
 }
 else
 {
